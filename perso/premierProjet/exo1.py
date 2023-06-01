@@ -13,6 +13,7 @@ def addData(data, ip, error):
         data[ip][error] = 1
 
 with open("./access.log", "r") as file_pointer:
+    # "^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).+ (\d{3})"gm regex
     for file in file_pointer.readlines():
         ip = file.split(" ")[0]
         error = file.split(" ")[8]
