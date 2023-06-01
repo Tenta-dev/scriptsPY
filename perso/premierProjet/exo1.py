@@ -16,8 +16,10 @@ with open("./access.log", "r") as file_pointer:
     for file in file_pointer.readlines():
         ip = file.split(" ")[0]
         error = file.split(" ")[8]
+        if error == "\"-\"":
+            error = file.split(" ")[6]
         addData(data, ip, error)
-# print(data)
+print(data)
 
 with open("data.json", "w") as json_file_pointer:
   json.dump(data, json_file_pointer, indent=4)
